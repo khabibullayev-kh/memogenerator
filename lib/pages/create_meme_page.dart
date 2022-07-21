@@ -97,7 +97,7 @@ class _EditTextBarState extends State<EditTextBar> {
               enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: AppColors.fuchsia38, width: 1)),
               focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.fuchsia38, width: 2)),
+                  borderSide: BorderSide(color: AppColors.fuchsia, width: 2)),
             ),
           );
         },
