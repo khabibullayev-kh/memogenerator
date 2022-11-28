@@ -45,7 +45,7 @@ Color? colorFromJson(final String? colorString) {
 }
 
 int? fontWeightToJson(final FontWeight? fontWeight) {
-  return fontWeight?.index;
+  return fontWeight == null ? null : fontWeight.index;
 }
 
 FontWeight? fontWeightFromJson(final int? fontWeightIndex) {

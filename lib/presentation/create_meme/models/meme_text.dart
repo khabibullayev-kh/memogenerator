@@ -42,7 +42,7 @@ class MemeText extends Equatable {
       text: text,
       color: newColor,
       fontSize: newFontSize,
-      fontWeight: fontWeight,
+      fontWeight: newFontWeight,
     );
   }
 

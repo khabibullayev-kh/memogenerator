@@ -502,11 +502,10 @@ class _DraggableMemeTextState extends State<DraggableMemeText> {
             builder: (context, snapshot) {
               final selectedItem = snapshot.hasData ? snapshot.data : null;
               final selected =
-                  widget.memeTextWithOffset.memeText.id == selectedItem?.id &&
-                      selectedItem != null;
+                  widget.memeTextWithOffset.memeText.id == selectedItem?.id;
               return MemeTextOnCanvas(
-                selected: selected,
                 padding: padding,
+                selected: selected,
                 parentConstraints: widget.parentConstraints,
                 text: widget.memeTextWithOffset.memeText.text,
                 fontSize: widget.memeTextWithOffset.memeText.fontSize,
