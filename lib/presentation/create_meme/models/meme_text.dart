@@ -6,7 +6,7 @@ import 'package:uuid/uuid.dart';
 class MemeText extends Equatable {
   static const defaultColor = Colors.black;
   static const defaultFontSize = 24.0;
-  static const defaultFontWeight = FontWeight.w100;
+  static const defaultFontWeight = FontWeight.w400;
 
   final String id;
   final String text;

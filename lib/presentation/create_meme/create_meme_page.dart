@@ -54,20 +54,8 @@ class _CreateMemePageState extends State<CreateMemePage> {
             title: const Text('Создаём мем'),
             bottom: const EditTextBar(),
             actions: [
-              GestureDetector(
-                onTap: () => bloc.shareMeme(),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Icon(Icons.share, color: AppColors.darkGrey),
-                ),
-              ),
-              GestureDetector(
-                onTap: () => bloc.saveMeme(),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Icon(Icons.save, color: AppColors.darkGrey),
-                ),
-              ),
+              AnimatedIconButton(onTap: () => bloc.shareMeme(), icon: Icons.share),
+              AnimatedIconButton(onTap: () => bloc.saveMeme(), icon: Icons.save),
             ],
           ),
           backgroundColor: Colors.white,
@@ -106,6 +94,44 @@ class _CreateMemePageState extends State<CreateMemePage> {
           ],
         );
       },
+    );
+  }
+}
+
+class AnimatedIconButton extends StatefulWidget {
+  final VoidCallback onTap;
+  final IconData icon;
+
+  const AnimatedIconButton({
+    Key? key,
+    required this.onTap,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  State<AnimatedIconButton> createState() => _AnimatedIconButtonState();
+}
+
+class _AnimatedIconButtonState extends State<AnimatedIconButton> {
+  double scale = 1.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() => scale = 1.5);
+        widget.onTap;
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: AnimatedScale(
+          duration: const Duration(milliseconds: 300),
+          scale: scale,
+          curve: Curves.bounceInOut,
+          child: Icon(widget.icon, color: AppColors.darkGrey, size: 24),
+          onEnd: () => setState(() => scale = 1.0),
+        ),
+      ),
     );
   }
 }
@@ -315,7 +341,6 @@ class BottomMemeText extends StatelessWidget {
               },
             ),
             const SizedBox(width: 4),
-
             BottomMemeTextAction(
               icon: Icons.delete_forever_outlined,
               onTap: () {
